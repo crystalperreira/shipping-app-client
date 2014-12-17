@@ -7,5 +7,28 @@ class CartController < ApplicationController
   end
 
   def show
+    @weight = order_weight
+    @qty = item_qty 
   end
+ 
+private
+ 
+  def order_weight                                  
+    weight = 0                                      
+    current_order.items.each do |item|         
+      id = item.product_id                          
+      wt = Product.find(id).weight                  
+      qty = item.quantity                           
+      weight += wt*qty                              
+    end                                             
+    weight                                          
+  end                                               
+                                                  
+  def item_qty                                      
+    quantity = 0                                    
+    current_order.items.each do |item|             
+      quantity += item.quantity                     
+    end                                             
+    quantity                                        
+  end                                               
 end
