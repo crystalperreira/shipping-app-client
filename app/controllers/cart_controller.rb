@@ -9,6 +9,11 @@ class CartController < ApplicationController
   def show
     @weight = order_weight
     @qty = item_qty 
+    @l = 10
+    @w = @qty*5
+    @h = 5
+    package_details
+    raise
   end
  
 private
@@ -31,4 +36,19 @@ private
     end                                             
     quantity                                        
   end                                               
+
+  def package_details
+    response = HTTParty.get(
+      'http://ship-ship.herokuapp.com/ship/package', :body =>
+      {:weight => @weight,
+       :length => @l
+       :height => @h,
+       :width => @w,
+       :country => 'US'
+       :state => current_order.address.state
+       :city => current_order.address.city
+       :zip => current_order.address.postal_code
+      }
+    )
+    response
 end
