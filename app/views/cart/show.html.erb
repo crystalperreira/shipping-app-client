@@ -50,4 +50,7 @@
     </tr>
   </tbody>
 </table>
-<%= link_to "Checkout", "", class: "checkout btn btn-default btn-block" %>
+<% if !current_order.address %>
+  <%= link_to "Checkout", "", class: "checkout btn btn-default btn-block" %>
+<% end %>
+

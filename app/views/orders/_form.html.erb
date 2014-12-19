@@ -34,8 +34,18 @@
 
     <div class='col-lg-5'>
       <h4 class='brand'>Shipping Option</h4>
-      <div class='shipping-options well'>
-        <span class='brand'>:( Please implement me. wt=<%=@weight%> qty=<%=@qty%></span>
+      <div class='shipping-options well' style = 'overflow: scroll;'>
+        <span class='brand'> 
+        <div class = 'form-group'>
+          <% @options.each do |choice| %>
+            <% if choice[0] == "UPS Ground" || choice[0] == "UPS Second Day Air" || choice[0] == "USPS Priority Mail 1-Day"%>
+              <%= radio_button_tag("order[selection]", choice[1]) %>
+              <%= label_tag("order[selection]", "#{choice[0]} $#{choice[1]/100.0}") %>
+              <br>
+            <% end %>
+          <% end %>
+        </div>
+        </span>
       </div>
       <%= f.submit "Checkout", class: "btn btn-success btn-block" %>
     </div>
