@@ -39,7 +39,7 @@
         <div class = 'form-group'>
           <% @options.each do |choice| %>
             <% if choice[0] == "UPS Ground" || choice[0] == "UPS Second Day Air" || choice[0] == "USPS Priority Mail 1-Day"%>
-              <%= radio_button_tag("order[selection]", choice[1]) %>
+              <%= radio_button_tag("order[selection]", choice) %>
               <%= label_tag("order[selection]", "#{choice[0]} $#{choice[1]/100.0}") %>
               <br>
             <% end %>
