@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   patch "/orders/:number", to: "orders#update"
 
   post "/addresses", to: "addresses#create", as: :addresses
+  delete '/delete_address', to: 'addresses#destroy', as: :delete_address  
   
   root "products#index"
   # The priority is based upon order of creation: first created -> highest priority.

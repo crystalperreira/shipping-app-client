@@ -5,4 +5,11 @@ class AddressesController < ApplicationController
       redirect_to cart_path
     end
   end
+
+  def destroy
+    address = Address.find(current_order.address.id)
+    address.destroy
+    redirect_to cart_path
+  end
+
 end

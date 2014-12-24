@@ -40,7 +40,7 @@ private
 
   def package_details
     response = HTTParty.get( # http://ship-ship.herokuapp.com/ship/package
-      'http://ship-ship.herokuapp.com/ship/package', :body =>
+      'http://localhost:5000/ship/package', :body =>
       {:weight => @weight.to_i,
        :length => @l,
        :height => @h,
